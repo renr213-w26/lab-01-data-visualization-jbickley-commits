@@ -70,13 +70,13 @@ midwest |> ggplot(aes(y = popdensity)) +
   geom_boxplot(fill = "lightblue4") +
   labs(
     y = "Population Density",
-    title = "Boxplot of Population density of Midwesten Counties",
+    title = "Boxplot of Population density of Midwesten Counties"
   )
 ```
 
 From the boxplot we can see a vast majority of the counties in the data set have very small population densities; with most being less than 10,000 and all but 4 are over 40,000. There are a few outliers in the data set, as we can see with the boxplot, with the observations that are well beyond the median. For example, one of these outliers is Milwaukee, which is a large city where we expect higher density compared to the other Midwest counties which are primarily rural.
 
-### Question 4
+### Question 3
 
 ```{r}
 midwest |> ggplot(aes(x = percollege, y= percbelowpoverty, shape = state, color = state)) +
@@ -88,9 +88,37 @@ midwest |> ggplot(aes(x = percollege, y= percbelowpoverty, shape = state, color 
   )
 ```
 
-From the above graph we can see that in general a higher percent population with a college degree is associated with a lower percent of population below the poverty line. The counties however, are highly clustered between 10-20% of people with a college degree, and there is considerable variation in this range. There is also a few notable outliers, firstly Menominee County has a poverty level considerably above any other county, however, does fit in the with general trend in terms of relationship with college education. Jackson County is also somewhat of an outlier in terms of overall trend, it has a 38% college education rate but one of the highest rates below poverty. The relationship appears to hold true in general for all states, and the clustering in the graph can make it difficult to see the points, however, we can see that some states like Ohio have more variability, and in general Indiana has lower poverty at given levels of college education.
+From the above graph we can see that in general a higher percent population with a college degree is associated with a lower percent of population below the poverty line. The counties however, are highly clustered between 10-20% of people with a college degree, and there is considerable variation in this range. There is also a few notable outliers, firstly Menominee County has a poverty level considerably above any other county, however, does fit in the with general trend in terms of relationship with college education. Jackson County is also somewhat of an outlier in terms of overall trend, it has a 38% college education rate but one of the highest rates below poverty. The relationship appears to hold true in general for all states, and the clustering in the graph can make it difficult to see the points, however, we can see that some states like Ohio and Illinois have more variability, and in general Indiana has lower poverty at given levels of college education.
+
+### Question 4
+
+```{r}
+midwest |> ggplot(aes(x = percollege, y= percbelowpoverty, shape = state, color = state)) +
+  geom_point() +
+  facet_wrap(~state)+
+  geom_smooth(se = FALSE)+
+  labs(
+    y = "Percent Below Poverty (%)",
+    x = "Percent with a College Degree (%)",
+    title = "Percent Population Below Poverty vs Percent Population with a College Degree by Midwestern State"
+  )
+```
+
+I prefer this plot compared to the one in Question 3, because it is less clustered and easier to see the trends, identify outliers and, still be able to compare between each state.
 
 ### Question 5
+
+```{r}
+midwest |> ggplot(aes(y = area, fill= state)) +
+  geom_boxplot() +
+  facet_wrap(~state)+
+  labs(
+    y = "Population Density",
+    title = "Boxplot of Population density of Midwesten Counties"
+  )
+```
+
+Indiana and Ohio have the smallest counties on average, followed by Illinois and Michigan, then Wisconsin which has the larges states by median. In terms of IQR, by the size of the boxes we can see Ohio and Illinois have limited variability, followed by Michigan, Illinois, and Wisconsin. However, Michigan has 3 outliers with 1 being very large. Marquette, Michigan is the largest county in the data set.
 
 ### Question 6
 

@@ -29,7 +29,6 @@ midwest |> ggplot(aes(x = popdensity)) +
 ```
 
 ```{r}
-df = midwest
 midwest |> ggplot(aes(x = popdensity)) +
   geom_histogram(binwidth = 1000, fill = "lightblue4") +
   labs(
@@ -41,7 +40,6 @@ midwest |> ggplot(aes(x = popdensity)) +
 ```
 
 ```{r}
-df = midwest
 midwest |> ggplot(aes(x = popdensity)) +
   geom_histogram(binwidth = 10000, fill = "lightblue4") +
   labs(
@@ -53,7 +51,6 @@ midwest |> ggplot(aes(x = popdensity)) +
 ```
 
 ```{r}
-df = midwest
 midwest |> ggplot(aes(x = popdensity)) +
   geom_histogram(binwidth = 100000, fill = "lightblue4") +
   labs(
@@ -68,9 +65,30 @@ Starting with the graph of binwidth 100, we see that the graph is very jagged wi
 
 ### Question 2
 
-### Question 3
+```{r}
+midwest |> ggplot(aes(y = popdensity)) +
+  geom_boxplot(fill = "lightblue4") +
+  labs(
+    y = "Population Density",
+    title = "Boxplot of Population density of Midwesten Counties",
+  )
+```
+
+From the boxplot we can see a vast majority of the counties in the data set have very small population densities; with most being less than 10,000 and all but 4 are over 40,000. There are a few outliers in the data set, as we can see with the boxplot, with the observations that are well beyond the median. For example, one of these outliers is Milwaukee, which is a large city where we expect higher density compared to the other Midwest counties which are primarily rural.
 
 ### Question 4
+
+```{r}
+midwest |> ggplot(aes(x = percollege, y= percbelowpoverty, shape = state, color = state)) +
+  geom_point() +
+  labs(
+    y = "Percent Below Poverty (%)",
+    x = "Percent with a College Degree (%)",
+    title = "Percent Population Below Poverty vs Percent Population with a College Degree by Midwestern State"
+  )
+```
+
+From the above graph we can see that in general a higher percent population with a college degree is associated with a lower percent of population below the poverty line. The counties however, are highly clustered between 10-20% of people with a college degree, and there is considerable variation in this range. There is also a few notable outliers, firstly Menominee County has a poverty level considerably above any other county, however, does fit in the with general trend in terms of relationship with college education. Jackson County is also somewhat of an outlier in terms of overall trend, it has a 38% college education rate but one of the highest rates below poverty. The relationship appears to hold true in general for all states, and the clustering in the graph can make it difficult to see the points, however, we can see that some states like Ohio have more variability, and in general Indiana has lower poverty at given levels of college education.
 
 ### Question 5
 

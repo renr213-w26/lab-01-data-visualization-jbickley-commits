@@ -10,6 +10,7 @@ editor: visual
 
 ```{r}
 library(tidyverse)
+midwest -> midwest
 
 ```
 
@@ -157,6 +158,39 @@ There is a clear outlier in Wisconsin which is Menominee County, with far higher
 
 **Enough about the Midwest!**
 
+```{r}
+nc_county <- read_csv("data/nc-county.csv")
+
+```
+
 ### Question 8
 
+I would initially guess that the larger land areas are going to be lower density areas.
+
+```{r}
+nc_county |> ggplot(aes(x = land_area_mi2, y= density)) +
+  geom_point( color = "firebrick") +
+  theme_bw()+
+  labs(
+    y = "Density",
+    x = "Land Area (Miles^2)",
+    title = "Density vs Area (Square Miles) by County in North Carolina"
+  )
+```
+
+We can see from the plot that there is no correlation between Land Area (Miles\^2) and Density. There are highly dense and low density areas of all sizes in North Carolina.
+
 ### Question 9
+
+```{r}
+nc_county |> ggplot(aes(x = land_area_m2, y= density)) +
+  geom_point( color = "firebrick") +
+  theme_bw()+
+  labs(
+    y = "Density",
+    x = "Land Area (Meters^2)",
+    title = "Density vs Area (Square Meters) by County in North Carolina"
+  )
+```
+
+This graph is basically the exact same graph as Question 8, which we should expect because Square Meters and Square Miles have a fixed conversion rates, so they are just scales versions of each other. There is no correlation shown here either.

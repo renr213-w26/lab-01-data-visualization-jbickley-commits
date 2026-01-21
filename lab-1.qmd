@@ -84,7 +84,7 @@ midwest |> ggplot(aes(x = percollege, y= percbelowpoverty, shape = state, color 
   labs(
     y = "Percent Below Poverty (%)",
     x = "Percent with a College Degree (%)",
-    title = "Percent Population Below Poverty vs Percent Population with a College Degree by Midwestern State"
+    title = "Percent Population Below Poverty vs Percent Population with a \n College Degree by Midwestern State"
   )
 ```
 
@@ -100,7 +100,7 @@ midwest |> ggplot(aes(x = percollege, y= percbelowpoverty, shape = state, color 
   labs(
     y = "Percent Below Poverty (%)",
     x = "Percent with a College Degree (%)",
-    title = "Percent Population Below Poverty vs Percent Population with a College Degree by Midwestern State"
+    title = "Percent Population Below Poverty vs Percent Population with \n a College Degree by Midwestern State"
   )
 ```
 
@@ -137,6 +137,21 @@ ggplot(aes(x = state, fill= metro)) +
 Ohio has the greatest percentage of counties in metro area, followed by Indiana, Michigan, Wisconsin, and Illinois with percentages of around 45%, 40%, 30%, 29% and 29% respectively.
 
 ### Question 7
+
+```{r}
+midwest |> ggplot(aes(x = percollege, y= percbelowpoverty, color = percwhite)) +
+  geom_point(alpha = 0.5, size = 2) +
+  facet_wrap(~state)+
+  theme_minimal()+
+  labs(
+    color = "% White",
+    y = "Percent Below Poverty (%)",
+    x = "Percent with a College Degree (%)",
+    title = "Percent Population Below Poverty vs Percent Population with a \n College Degree by Midwestern State and Proportion of White Population"
+  )
+```
+
+There is a clear outlier in Wisconsin which is Menominee County, with far higher poverty, lower education, and lower proportion of a white population then any other. In Menominee a vast majority \~89% of people are American Indian.
 
 ## Part 2
 

@@ -113,14 +113,28 @@ midwest |> ggplot(aes(y = area, fill= state)) +
   geom_boxplot() +
   facet_wrap(~state)+
   labs(
-    y = "Population Density",
-    title = "Boxplot of Population density of Midwesten Counties"
+    y = "State Area",
+    title = "Boxplot of Area of Midwestern Counties by State"
   )
 ```
 
 Indiana and Ohio have the smallest counties on average, followed by Illinois and Michigan, then Wisconsin which has the larges states by median. In terms of IQR, by the size of the boxes we can see Ohio and Illinois have limited variability, followed by Michigan, Illinois, and Wisconsin. However, Michigan has 3 outliers with 1 being very large. Marquette, Michigan is the largest county in the data set.
 
 ### Question 6
+
+```{r}
+midwest |>
+  mutate(metro = if_else(inmetro == 1, "Yes", "No")) |> 
+ggplot(aes(x = state, fill= metro)) +
+  geom_bar(position = "fill") +
+  labs(
+    y = "Proportion of Counties",
+    title = "Plot of Proportion of Counties in a Metropolitan Area by State"
+  )
+
+```
+
+Ohio has the greatest percentage of counties in metro area, followed by Indiana, Michigan, Wisconsin, and Illinois with percentages of around 45%, 40%, 30%, 29% and 29% respectively.
 
 ### Question 7
 
